@@ -1,18 +1,21 @@
-<html>
-  <head>
-      <title>Atsushi's blog</title>
-  </head>
-  <body>
-      <div>
-          <h1><a href="/">Atsushi's Blog</a></h1>
+{% extends 'blog/base.html' %}
+
+{% block content %}
+  {% for post in posts %}
+      <div class="post">
+          <div class="date">
+              <p>published:2018</p>
+            </div>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">My first post</a></h1>
+            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+      </div>
+      <div class="post">
+          <div class="date">
+              <p>published:2018</p>
+            </div>
+            <h1><a href="">My second post</a></h1>
+            <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut f.</p>
       </div>
 
-      {% for post in posts %}
-      <div>
-          <p>published: {{ post.published_date }}</p>
-          <h1><a href="">{{ post.title }}</a><h1>
-          <p>{{ post.text|linebreaksbr }}</p>
-      </div>
-      {% endfor %}
-  </body>
-</html>
+  {% endfor %}
+{% endblock %}
